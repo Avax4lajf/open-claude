@@ -5,7 +5,7 @@
   "description": "Open Claude - A custom Claude client",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc -p src/renderer/tsconfig.json",
     "start": "npm run build && electron .",
     "dev": "npm run build && electron .",
     "pack": "npm run build && electron-builder --dir",

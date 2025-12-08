@@ -4,6 +4,7 @@ node_modules/
 # Build outputs
 dist/
 release/
+static/js/
 
 # OS files
 .DS_Store
