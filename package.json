@@ -5,11 +5,12 @@
   "description": "Open Claude - A custom Claude client",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc && tsc -p src/renderer/tsconfig.json",
-    "start": "npm run build && electron .",
-    "dev": "npm run build && electron .",
-    "pack": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder"
+    "build": "tsc && pnpm run build:renderer",
+    "build:renderer": "esbuild src/renderer/main.ts --bundle --outfile=static/js/main.js --format=esm --platform=browser && esbuild src/renderer/spotlight.ts --bundle --outfile=static/js/spotlight.js --format=esm --platform=browser",
+    "start": "pnpm run build && electron .",
+    "dev": "pnpm run build && electron .",
+    "pack": "pnpm run build && electron-builder --dir",
+    "dist": "pnpm run build && electron-builder"
   },
   "build": {
     "appId": "com.openclaude.app",
@@ -27,7 +28,9 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["universal"]
+          "arch": [
+            "universal"
+          ]
         }
       ]
     },
@@ -40,12 +43,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron-store": "^11.0.2"
+    "electron-store": "^11.0.2",
+    "marked": "^17.0.1"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
     "electron": "^39.2.6",
     "electron-builder": "^26.0.12",
+    "esbuild": "^0.27.1",
     "typescript": "^5.9.3"
   }
 }
