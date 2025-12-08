@@ -3042,8 +3042,7 @@
             html += '</div>';
             currentTimelineSteps = [];
           }
-          // Add text with cursor
-          html += parseMarkdown(step.text) + '<span class="streaming-cursor"></span>';
+          html += parseMarkdown(step.text);
         } else {
           currentTimelineSteps.push(step);
         }
