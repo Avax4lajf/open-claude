@@ -710,6 +710,10 @@ function addMessageRaw(role: string, htmlContent: string): HTMLElement {
   c.innerHTML = htmlContent;
   el.appendChild(c);
 
+  c.querySelectorAll('.step-item').forEach(stepEl => {
+    stepEl.addEventListener('click', () => stepEl.classList.toggle('expanded'));
+  });
+
   const messages = $('messages');
   if (messages) messages.appendChild(el);
   scrollToBottom();
